@@ -1,14 +1,21 @@
+/**
+ * Config constant - Replace values below.
+ */
+
 const config = {
-    API_KEY: "a2ebafbe",
-    API_SECRET: "bNFiOKYIGdk1Yaw6",
-    APPLICATION_ID: "1e1b4d67-fd7f-488f-bc9e-fdbdccee0685",
+    API_KEY: "<YOUR_API_KEY>",
+    API_SECRET: "<YOUR_API_SECRET>",
+    APPLICATION_ID: "<YOUR_APPLICATION_ID>",
     PRIVATE_KEY: "private.key",
-    TO_NUMBER: "46765272068",
-    FROM_NUMBER: "46765196067",
+    TO_NUMBER: "<YOUR_TO_NUMBER>",
+    FROM_NUMBER: "<YOUR_FROM_NUMBER>",
     PORT: 3000,
-    TIMEOUT: 180*1000
+    TIMEOUT: 180*1000 // 180 seconds
 };
 
+/**
+ * Nexmo NodeJS client configuration
+ */
 const Nexmo = require('nexmo');
 const nexmo = new Nexmo({
     apiKey: config.API_KEY,
@@ -55,7 +62,6 @@ app.post('/webhooks/inbound-message', (req, res) => {
  * The function will be initiated after the timeout has been reached.
  * In the meantime, if the application receives an SMS, the mmsFlag is set to false and no MMS will be sent.
  */
-
 setTimeout(function(){
     if(!mmsFlag) {
         console.log("Deadline expired, message not received before the deadline.")
@@ -78,8 +84,7 @@ setTimeout(function(){
 }, config.TIMEOUT);
 
 /**
- *
- * @type {number}
+ * Initialize the Express server with the predefined port
  */
 var port = config.PORT;
 app.listen(port, () => console.log(`Server started using port ${port}`));
