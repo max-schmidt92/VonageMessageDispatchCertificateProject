@@ -23,6 +23,9 @@ const nexmo = new Nexmo({
     privateKey: config.PRIVATE_KEY
 }, {debug: false}); // Leave debug: true to showcase all information.
 
+/**
+ * Send an SMS message highlighting the initiation of the project.
+ */
 nexmo.channel.send(
     { "type": "sms", "number": config.FROM_NUMBER },
     { "type": "sms", "number": config.TO_NUMBER },
